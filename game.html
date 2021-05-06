@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Trapped!</title>
+    <link rel = "stylesheet" href = "game-style.css">
+  </head>
+  
+	<body>
+    <header>
+
+      <!--The help modal-->
+			<!--Reference for Modal code https://css-tricks.com/considerations-styling-modal-->
+      <button id="modalBtn" class="help-button"><b>?</b></button>
+
+      <div id="helpModal" class="modal">
+        <div class="modal-content">
+          <span class="closeBtn">&times;</span>
+            <h2 class="modal-header">Help Guide</h2>
+            <div class="modal-body">
+              <p>
+                You suddenly wake up locked inside an old house with no recollection of how you got there. It seems that you must explore and solve puzzles to find a way out.
+                <br>
+                Throughout the game you will have to figure out why and how you got there, while making vital decisions that will decide your fate and possibly enable your escape of the abandoned house.
+              </p>
+            </div>
+        </div>
+			</div>
+
+      <!--mute toggle-->
+      <label class = "switch">
+        <input type = "checkbox" id = "checkbox">
+        <span class = "slider" onclick = "changeMusic()"></span>
+      </label>
+
+  	</header>
+
+		<div id="game">
+
+
+      <!--Background Music-->
+      <section id = "background-music">
+      <div id = "text-box" class = "storylineS">
+        <p> Would you like music?</p>
+        <button type = "button" id = "choiceBtnA" class = "choice-a" onclick="playMusic(), gameStart(), document.getElementById('checkbox').checked = true;">Yes</button>
+        <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "gameStart()">No</button>
+      </div>
+        <div id="play-audio" class="audio">
+          <audio id="audio-1" src="Sounds/Background-Music/midnight-stroll.mp3" type="audio/mp3" preload="true" controls loop></audio>
+          <!--<audio id="audio-2" src="Sounds/Background-Music/love-and-sorrow.mp3" type="audio/mp3" autoplay controls loop></audio>
+          <audio id="audio-3" src="Sounds/Background-Music/mystic-forests.mp3" type="audio/mp3" autoplay controls loop></audio>
+          <audio id="audio-4" src="Sounds/Background-Music/night-drive.mp3" type="audio/mp3" autoplay controls loop></audio>
+          <audio id="audio-5" src="Sounds/Background-Music/rebirth.mp3" type="audio/mp3" autoplay controls loop></audio>
+          <audio id="audio-6" src="Sounds/Background-Music/tides.mp3" type="audio/mp3" autoplay controls loop></audio>-->
+        </div>
+      </section>
+
+      <!--PHASE 1-->
+
+			<!--The story-->
+      <section id = "startScreen">
+
+        <img id = "game-img" src = "Images/The-room.jpg" alt = "The Room">
+
+        <div id = "text-box" class = "storylineS">
+          <p>CRASH!! You are jolted awake by the sound of something falling. Looking around you find yourself in an unfimiliar room.</p>
+          <button type = "button" id = "continueBtn" class = "continue-1">
+						Continue
+					</button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>You look around, examining every inch of the dark surroundings. As you squint you slowly realise you can not remember how you came to be here.</p>
+					
+          <button type = "button" id = "continueBtn" class = "continue-2">
+						Continue
+				  </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS3">
+					<p>You soon notice that there is a door on the wall across from you and a window next to you. You decide to take action but what should you do?</p>
+          <button type="button" id="choiceBtnA" class="choice-a" onclick="theWindow()">Check the window</button>
+          <button type="button" id="choiceBtnB" class="choice-b" onclick="theDoor()">Try the door</button>
+          <button type="button" id="choiceBtnC" class="choice-c" onclick="exploreRoomMore()">Look around more</button>
+        </div>
+
+
+
+      </section>
+
+      <div id = "play-audio"></div>
+
+      <!--The Window-->
+      <section id = "the-window">
+
+        <img id = "game-img" src = "Images/The-room.jpg" alt = "The Room">
+
+        <div id = "text-box" class = "storylineS">
+          <p>When you try to open the window you find it's locked shut. The window is covered in dirt, you can't see a thing through
+          it.</p>
+
+          <button type="button" id="continueBtn" class="continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div  id = "text-box" class ="storylineS2">
+          <p>What is your next move?</p>
+          <button type="button" id="choiceBtnA" class="choice-a" onclick="theDoor()">Try the door</button>
+          <button type="button" id="choiceBtnC" class="choice-b" onclick="exploreRoomMore()">Look around more</button>
+        </div>
+
+      </section>
+
+      <!--The door-->
+      <section id = "the-door">
+
+        <img id = "game-img" src = "Images/The-room.jpg" alt = "The Room">
+
+        <div id = "text-box" class = "storylineS">
+          <p>You try to jiggle the door open with no luck! The door is locked shut and has no windows, however you can see light through the door frame gaps.</p>
+        
+          <button type="button" id="continueBtn" class="continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>You decide to see if you can hear anything on the otherside of the door, but sadly there is dead silence.</p>
+        
+          <button type="button" id="continueBtn" class="continue-2">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS3">
+          <p>What should you do next?</p>
+
+          <button type="button" id="choiceBtnA" class="choice-a" onclick="theWindow()">Try the window</button>
+          <button type="button" id="choiceBtnC" class="choice-b" onclick="exploreRoomMore()">Look around more</button>
+        </div>
+
+      </section>
+
+      <!-- Look Around-->
+      <section id = "look-around-room">
+
+        <img id = "game-img" src = "Images/The-room.jpg" alt = "The Room">
+
+        <div id = "text-box" class = "storylineS">
+          <p>The room is dark, dimmly lit from the gaps in the doorframe. As your eyes adjust, you are able to see the faint outline of a desk in the corner.</p>
+        
+          <button type="button" id="continueBtn" class="continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>You stumble over to the desk, being cautious as to not to trip over anything. When you arrive, you can feel two drawers on the desk.</p>
+        
+          <button type="button" id="continueBtn" class="continue-2">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS3">
+          <p>Do you try to open the drawers?</p>
+
+          <button type="button" id="choiceBtnA" class="choice-a" onclick="exploreDesk()">Yes</button>
+          <button type="button" id="choiceBtnC" class="choice-b" onclick="noExploreDesk()">No</button>
+        </div>
+
+      </section>
+            
+      <!--Check drawers-->
+      <section id = "check-desk-drawers">
+
+        <img id = "game-img" src = "Images/The-room.jpg" alt = "The Room">
+
+        <div id = "text-box" class = "storylineS">
+          <p>You try to open the desk drawers. You first try the top drawer but find it is locked. The bottom drawer is stiff but opens after a few attempts.</p>
+        
+          <button type="button" id="continueBtn" class="continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>Inside the drawer you find a key! What should you do?</p>
+
+          <button type="button" id="choiceBtnA" class="choice-a" onclick="windowLock()">Try key on the window</button>
+          <button type="button" id="choiceBtnB" class="choice-b" onclick="doorLock()">Try key on the door</button>
+          <button type="button" id="choiceBtnC" class="choice-c" onclick="deskLock()">Try key on the desk</button>
+        </div>
+                
+      </section>
+
+      <!--Doesn't check drawers-->
+
+      <section id="no-check-desk">
+        <div id="text-box" class="storylineS">
+          <p>What would you like to do?</p>
+
+          <button type="button" id="choiceBtnA" class="choice-a" onclick="theWindow()">Check the window</button>
+          <button type="button" id="choiceBtnB" class="choice-b" onclick="theDoor()">Try the door</button>
+          <button type="button" id="choiceBtnC" class="choice-c" onclick="exploreRoomMore()">Look around more</button>
+        </div>
+      </section>
+
+      <!--PHASE 2-->
+
+      <!--Tries key on window-->
+      <section id = "key-on-window">
+
+        <img id = "game-img" src = "Images/The-room.jpg" alt = "The Room">
+
+        <div id="text-box" class="storylineS">
+          <p>You try the key on the window lock but it is the wrong size.</p>
+          <button type = "button" id = "continueBtn" class = "continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class ="storylineS2">
+          <p>You try wiping the window and peering through it again but it is still too dark to see. It must be night time...</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "doorLock()">Try key on door</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "deskLock()">Try key on desk</button>
+        </div>
+      </section>
+
+      <!--Tries key on door-->
+      <section id = "key-on-door">
+
+        <img id = "game-img" src = "Images/The-room.jpg" alt = "The Room">
+
+        <div id = "text-box" class = "storylineS">
+          <p>You try the key on the door and to your surprise it fits! But it won't turn. You try jiggling it and it finally clicks.</p>
+          <button type = "button" id = "continueBtn" class = "continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>You slowly open the door as your eyes adjust to the increase of the light. Once your eyes have adjusted, you can see that the door leads to a corridor.</p>
+          <button type = "button" id = "continueBtn" class = "continue-2">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS3">
+          <p>You peer each way to see what the corridor holds.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "lookLeftCorridor()">Look left</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "lookRightCorridor()">Look right</button>
+        </div>
+      </section>
+
+      <!--Tries key on desk-->
+      <section id = "key-on-desk">
+        <div id = "text-box" class = "storylineS">
+          <p>You try the key on the top drawer of the desk, but it doesn't fit. You try to pull on the drawer with a bit of force, but it still doesn't open.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "windowLock()">Try key on window</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "doorLock()">Try key on door</button>
+        </div>
+      </section>
+      
+      <!--Look left in corridor-->
+      <section id = "look-left-corridor">
+        <img id = "game-img2" src = "Images/abandoned-corridor-left.jpg" alt = "The Left corridor">
+        <div id = "text-box" class = "storylineS">
+          <p>You turn to the left to see the end of the corridor with another window, but it is just as dark and dirty as the other.</p>
+          <button type = "button" id = "choiceBtnB" class = "choice-b" onclick = "lookRightCorridor()">Look right</button>
+        </div>
+      </section>
+
+      <!--Look right in corridor-->
+      <section id = "look-right-corridor">
+        <img id = "game-img2" src = "Images/abandoned-corridor-right.jpg" alt = "The Right corridor">
+        <div id = "text-box" class = "storylineS">
+          <p>You turn to the right and you see the end of the corridor, but it is long. It has two doors, one across the hall and one on the same side you are on now.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "exploreLeftSide()">Explore the left</button>
+          <button type = "button" id = "choiceBtnB" class = "choice-b" onclick = "investigateOriginalRoom()">Explore the lit room</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "exploreRightSide()">Explore the right</button>
+        </div>
+      </section>
+
+      <!--PHASE 3-->
+
+      <!--Explore left side-->
+      <section id = "explore-left-corridor">
+        <img id = "game-img2" src = "Images/abandoned-corridor-left.jpg" alt = "The Left corridor">
+        <div id = "text-box" class = "storylineS">
+          <p>You turn left, but it is a dead end and you still can't see through the window.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "exploreRightSide()">Explore the right</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "investigateOriginalRoom()">Explore the lit room</button>
+        </div>
+      </section>
+
+      <!--Explore lit room-->
+      <section id = "explore-lit-room">
+        <img id = "game-img" src = "Images/The-room-lit.jpg" alt = "The Room Lit">
+        <div id = "text-box" class = "storylineS">
+          <p>Now that your eyes have adjusted and the light is spilling into the room, you can now see that there is a light hanging from the ceiling. There is a disturbing amount of dust but nothing significant.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "exploreLeftSide()">Explore the left</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "exploreRightSide()">Explore the right</button>
+        </div>
+      </section>
+
+      <!--Explore right side-->
+      <section id = "explore-right-corridor">
+        <img id = "game-img2" src = "Images/abandoned-corridor-right.jpg" alt = "The Right corridor">
+        <div id = "text-box" class = "storylineS">
+          <p>You turn right, slowly making your way down the corridor towards the other doors. As you get closer, you can see light coming through the doorframes. What do you do?</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "exploreLeftDoor()">Explore the left door</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "exploreRightDoor()">Explore the right door</button>
+        </div>
+      </section>
+
+      <!--PHASE 4.1-->
+
+      <!--Explore left sided room-->
+      <section id = "explore-left-room">
+        <img id = "game-img2" src = "Images/left-door.jpg" alt = "The Left Door">
+        <div id = "text-box" class = "storylineS">
+          <p>You slowly approach the left door, there is a light on the other side.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "exploreRightDoor()">Go to the other door</button>
+          <button type = "button" id = "choiceBtnB" class = "choice-b" onclick = "tryOpenLeftDoor()">Try open it</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "knockOnLeftDoor()">Knock and wait</button>
+        </div>
+      </section>
+
+      <!--Try open left door-->
+      <section id = "try-open-left-door">
+        <img id = "game-over" src = "Images/game-over.png" alt = "Game Over">
+        <div id = "text-box" class = "storylineS">
+          <p>You slowly open the door, thinking that it's clear. You walk in, however what you didn't see was the massive shepard sleeping.</p>
+          <button type = "button" id = "continueBtn" class = "continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>You stop dead in your tracks, however it is too late. The dog wakes up and attacks.</p>
+          <button type = "button" id = "continueBtn" class = "restart-btn" onclick = "window.location.reload();">RESTART</button>
+        </div>
+      </section>
+
+      <!--Knock on the door-->
+      <section id = "try-knock-left-door">
+        <img id = "game-img2" src = "Images/left-door.jpg" alt = "The Left Door">
+        <div id = "text-box" class = "storylineS">
+          <p>You gently knock on the door and wait. You didn't expect a response but instead of silence the knock was answered with an agressive bark.</p>
+          <button type = "button" id = "continueBtn" class = "continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>You jump back as the barking continues. The door seems to hold back the aggressive beast but you step back again just in case.</p>
+          <button type = "button" id = "choiceBtnB" class = "choice-b" onclick = "exploreRightDoor()">Explore right door</button>
+        </div>
+      </section>
+
+      <!--PHASE 4.2-->
+      <!--Investigate right door-->
+      <section id = "explore-right-room">
+        <img id = "game-img2" src = "Images/right-door.jpg" alt = "The Right Door">
+        <div id = "text-box" class = "storylineS">
+          <p>You slowly approach the door, you can see some light seeping through the cracks of the door frame, but it isn't as bright as the left door, almost flickering...</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "exploreLeftDoor()">Go to the other door</button>
+          <button type = "button" id = "choiceBtnB" class = "choice-b" onclick = "tryOpenRightDoor()">Try open it</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "knockOnRightDoor()">Knock and wait</button>
+        </div>
+      </section>
+
+      <!--Try to open right door-->
+      <section id = "try-open-right-door">
+        <img id = "game-img" src = "Images/dark-forest.jpg" alt = "The Dark Forest">
+        <div id = "text-box" class = "storylineS">
+          <p>You slowly open the door and step through silently. As you open the door, you realise the flickering light is coming from a lantern hanging from a wooden beam.</p>
+          <button type = "button" id = "continueBtn" class = "continue-1">
+            Continue
+          </button>
+        </div>
+
+        <div id = "text-box" class = "storylineS2">
+          <p>You slowly realise, you are outside! You stand on a wooden poarch and it's still dark however the light from the latern spills out ahead of you. It doesn't go far but from what you can see, the area is surrounded by a forest.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "runThroughForest()">Run away</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "investigateMoreOutside()">Look around and investigate</button>
+        </div>
+      </section>
+
+      <!--Try to knock on right door-->
+      <section id = "try-knock-right-door">
+        <img id = "game-img2" src = "Images/right-door.jpg" alt = "The Right Door">
+        <div id = "text-box" class = "storylineS">
+          <p>You gently knock on the door. You wait but there is no response, the light continues to flicker through the gaps.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "explorerightDoor()">Go back to left door</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "tryOpenRightDoor()">Try open door</button>
+        </div>
+      </section>
+
+      <!--PHASE 5-->
+      <!--Run away-->
+      <section id = "run-into-forest">
+        <img id = "game-over" src = "Images/game-over.png" alt = "Game Over">
+        <div id = "text-box" class = "storylineS">
+          <p>You're free... or so you thought. As you run, you make a bit of noise, not much but enough! You hear voices beginning to shout and then a dog starts to bark. You keep running but it doesn't take long for the dog to catch up.</p>
+          <button type = "button" id = "continueBtn" class = "restart-btn" onclick = "window.location.reload();">RESTART</button>
+        </div>
+      </section>
+
+      <!--Investigate more outside-->
+      <section id = "investigate-outside-more">
+        <img id = "game-img" src = "Images/dark-forest.jpg" alt = "The Dark Forest">
+        <div id = "text-box" class = "storylineS">
+          <p>You slowly make your way off the porch. From what you can see, you're surrounded by trees, as you make your way around the building. You see a dirt road heading into the forest and parked at the end is a van.</p>
+          <button type = "button" id = "choiceBtnA" class = "choice-a" onclick = "goDownTheRoad()">Go see the road</button>
+          <button type = "button" id = "choiceBtnC" class = "choice-c" onclick = "waitAndWatchVan()">Wait and watch the van</button>
+        </div>
+      </section>
+    </div>
+
+		<!--The JavaScript for the game-->
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="JavaScriptMain.js"></script>
+
+  </body> 
+</html>

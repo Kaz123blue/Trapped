@@ -1,0 +1,165 @@
+body {
+  background-color: #113651;
+  color: #919dc7;
+  position: relative;
+  min-width: 320px;
+  max-width: auto;
+  padding: 10%;
+  font-weight: normal;
+}
+
+.center{
+  text-align: center;
+}
+
+/*title for the pages*/
+.title {
+  font-size: 75px;
+  font-family: monospace;
+}
+
+.button {
+	display: block;
+  text-align: center;
+  background-color: transparent;
+  border: transparent;
+  font-size: 50px;
+  font-family: monospace;
+  color: #919dc7;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2%;
+}
+/*Play button layout*/
+
+a{
+  display: block;
+	text-align: center;
+  background-color: transparent;
+  border: transparent;
+  font-size: 50px;
+  font-family: monospace;
+  color: #919dc7;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2%;  
+}
+
+/*for when the cursor hovers over button*/
+
+.button:hover , a:hover {
+  font-size: 50px;
+  font-family: monospace;
+  color:#3f6197;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+/*Typing animation for title*/
+.typing-effect {
+  text-align: center;
+  width: 8ch;
+  padding: 1.5%;
+  display: block;
+  font-family: monospace;
+  overflow: hidden; /* ensures content is hidden until the animation*/
+  border-right: 3px solid;/* the cursor values*/
+  white-space: nowrap; /*Keeps text in single line*/
+  margin: 0 auto;/*gives that scrolling effect as the typing happens*/
+  animation: typing 2s steps(15, end), blink .5s step-end infinite alternate;
+}
+
+/*the typing effect*/
+@keyframes typing{
+  from {width: 0;}
+  to {width: 7ch;}
+}
+
+/*typewriter cursor effect*/
+@keyframes blink{
+  from, to {border-color: transparent;}
+  50% {border-color: #ad9cba;}
+}
+
+/*THE HELP/MODAL BUTTON*/
+.help-button {
+  display:block;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  margin-right: 75px;
+  text-align: center;
+  background-color: #3f6197;
+  border: transparent;
+  font-size: 20px;
+  font-family: monospace;
+  color: #919dc7;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}
+
+.help-button:hover {
+  font-size: 20px;
+  font-family: monospace;
+  color:#3f6197;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #919dc7;
+}
+
+
+/*THE MODAL*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.modal-header{
+  color: #2c394e;
+  text-align: center;
+  font-size: 75px;
+  font-family: monospace;
+}
+
+.modal-body{
+  color: #2c394e;
+  text-align: center;
+  font-family: monospace;
+  font-size: 25px;
+}
+
+.modal-content {
+  background-color: aliceblue;
+  margin: 10% auto;
+  padding: 20px;
+  width: 70%;
+  animation-name: modalopen;
+  animation-duration: 3s;
+}
+
+.closeBtn {
+  color: #777777;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.closeBtn:hover, .closeBtn:focus {
+  color: #0c0c0c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen{
+  from {opacity: 0}
+  to {opacity: 1}
+}

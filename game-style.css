@@ -1,0 +1,311 @@
+body {
+  background-color: #113651;
+  color: #919dc7;
+  position: relative;
+  min-width: 320px;
+  max-width: auto;
+  padding: 3%;
+}
+
+
+#game{
+	background-color: #bdc1dc;  
+	align-items: center;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+  height: 600px;
+  width: 1200px;
+  position: relative;
+  margin-top: 4px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+header{
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+
+
+/*THE HELP/MODAL BUTTON*/
+.help-button {
+  display:block;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  margin-right: 75px;
+  text-align: center;
+  background-color: #3f6197;
+  border: transparent;
+  font-size: 20px;
+  font-family: monospace;
+  color: #919dc7;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}
+
+.help-button:hover {
+  font-size: 20px;
+  font-family: monospace;
+  color:#3f6197;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #919dc7;
+}
+
+
+/*THE MODAL*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.modal-header{
+  color: #2c394e;
+  text-align: center;
+  font-size: 75px;
+  font-family: monospace;
+}
+
+.modal-body{
+  color: #2c394e;
+  text-align: center;
+  font-family: monospace;
+  font-size: 25px;
+}
+
+.modal-content {
+  background-color: aliceblue;
+  margin: 10% auto;
+  padding: 20px;
+  width: 70%;
+  animation-name: modalopen;
+  animation-duration: 3s;
+}
+
+.closeBtn {
+  color: #777777;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.closeBtn:hover, .closeBtn:focus {
+  color: #0c0c0c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen{
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+
+/*THE TOGGLE SWITCH*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/*hide default html checkbox*/
+.switch input {
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 34px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+/*Storyline stuff*/
+#text-box {
+  height: 160px; 
+	width: 1150px;
+	background-color: #3e3c49; 
+	padding: 0;
+  margin: auto;
+  display: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 450;
+  right: 0;
+  left: 0;
+  bottom: 25px;
+	border: 3px solid #302f39;
+}
+
+#text-box p{
+  font-family: monospace;
+  margin: 5px;
+  color: #919dc7;
+  text-align: center;
+  font-size: 25px;
+  top: 15px;
+}
+
+#game-img{
+  width: 500;
+  top: 25px;
+  bottom: 450;
+}
+#game-img2{
+  height: 400px;
+}
+
+#game-over{
+  top: 25px;
+}
+
+/*The Continuing buttons*/
+#continueBtn {
+	background-color: transparent;
+	border: transparent;
+	display: inline-block;
+  text-align: center;
+	transition-duration: 0.4s;
+	cursor: pointer;
+  font-size: 25px;
+  font-family: monospace;
+  color: #919dc7;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
+  left: 500px;
+  right: 500px;
+}
+
+#continueBtn:hover {
+  color:#4d5098;
+}
+
+#choiceBtnA{
+  border: 2px solid #919dc7;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: monospace;
+  color: #919dc7;
+  padding: auto;
+  width: fit-content;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  left: 40px;
+}
+
+#choiceBtnA:hover{
+  border: 2px solid #4d5098;
+  color: #4d5098;
+}
+
+#choiceBtnB{
+  border: 2px solid #919dc7;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: monospace;
+  color: #919dc7;
+  padding: auto;
+  width: fit-content;
+  height: fit-content;
+  display: inline-flex;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  left: 475px;
+  right: 475px;
+} 
+
+#choiceBtnB:hover{
+  border: 2px solid #4d5098;
+  color: #4d5098;
+}
+
+#choiceBtnC{
+  border: 2px solid #919dc7;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: monospace;
+  color: #919dc7;
+  padding: auto;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  right: 40px;
+}
+
+#choiceBtnC:hover{
+  border: 2px solid #4d5098;
+  color: #4d5098;
+}
+
+/*Music Style*/
+
+.audio{
+  display: none;
+}
